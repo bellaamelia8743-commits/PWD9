@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>IF-ELSE Internal</title>
+    <script type="text/javascript">
+      // <![CDATA[
+      function runCheck() {
+        var ageInput = prompt("Masukkan umur (angka):", "");
+        if (ageInput === null) return; // user cancel
+        var age = parseInt(ageInput, 10);
+        if (isNaN(age)) {
+          alert("Umur harus berupa angka!");
+          return;
+        }
+
+        var gender = prompt("Masukkan jenis kelamin (M/F):", "");
+        if (gender === null) return;
+        gender = String(gender).trim().toUpperCase();
+
+        var isMale = gender === "M" || gender === "L"; // L = Laki-laki
+        var isFemale = gender === "F" || gender === "P"; // P = Perempuan
+
+        if (!isMale && !isFemale) {
+          alert("Jenis kelamin harus M/F (atau L/P).");
+          return;
+        }
+
+        var category = age >= 17 ? "dewasa" : "remaja";
+        var jk = isMale ? "pria" : "wanita";
+        var msg = "Anda adalah " + jk + " " + category + " (umur: " + age + ").";
+        alert(msg);
+      }
+
+      window.onload = runCheck;
+      // ]]>
+    </script>
+    <style type="text/css">
+      body { font-family: sans-serif; }
+      .box { max-width: 640px; margin: 2rem auto; line-height: 1.6; }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h1>IF-ELSE Internal</h1>
+      <p>Halaman ini menjalankan prompt otomatis saat dimuat.</p>
+      <p><button onclick="runCheck()">Jalankan Lagi</button></p>
+    </div>
+  </body>
+</html>
